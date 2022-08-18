@@ -2,8 +2,8 @@
 // Custom scripts
 // Мобильное меню бургер
 function burgerMenu() {
-  const burger = document.querySelector(".burger");
-  const menu = document.querySelector(".menu");
+  const burger = document.getElementById("burger");
+  const menu = document.getElementById("menu");
   const body = document.querySelector("body");
   burger.addEventListener("click", () => {
     if (!menu.classList.contains("active")) {
@@ -16,6 +16,13 @@ function burgerMenu() {
       body.classList.remove("locked");
     }
   });
+	document.onclick = function (clickEvent) {
+	if(clickEvent.target.id !== "menu" && clickEvent.target.id !== "burger") {
+            menu.classList.remove('active')
+            burger.classList.remove('active-burger')
+            body.classList.remove('locked')
+        }
+    }
   // Вот тут мы ставим брейкпоинт навбара
   window.addEventListener("resize", () => {
     if (window.innerWidth > 991.98) {
